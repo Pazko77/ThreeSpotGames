@@ -1,43 +1,17 @@
 import java.lang.*;
-
-import static java.lang.System.currentTimeMillis;
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        //Plateau plateau = new Plateau();
-        long temps1 = currentTimeMillis();
-        for (int j = 0; j < 10; j++) {
-            if(j == 0 || j == 9) {
-                for (int i = 0; i < 10; i++) {
-                    System.out.print("*");
-                }
-            }
-            else{
-                System.out.print("*");
-                for (int i = 0; i < 8; i++) {
-                    System.out.print(" ");
-                }
-                System.out.print("*");
-            }
-            System.out.println();
-        }
-        //plateau.Jeu();
-        long temps2 = currentTimeMillis();
-        System.out.println(temps2-temps1);
-        temps1 = currentTimeMillis();
-        System.out.println("**********");
-        System.out.println("*        *");
-        System.out.println("*        *");
-        System.out.println("*        *");
-        System.out.println("*        *");
-        System.out.println("*        *");
-        System.out.println("*        *");
-        System.out.println("*        *");
-        System.out.println("*        *");
-        System.out.println("**********");
-
-        //plateau.Jeu();
-        temps2 = currentTimeMillis();
-        System.out.println(temps2-temps1);
+        Pion pionR = new Pion();
+        pionR.pion= new ArrayList<Pion>();
+        pionR.pion.add(new Pion('R',0,0));
+        pionR.pion.addLast(new Pion('R',0,1));
+//        Plateau plateau = new Plateau(3,3);
+//        plateau.ajouter(new Pion('0',2,0));
+//        plateau.ajouter(new Pion('0',2,1));
+//        plateau.ajouter(new Pion('0',2,1));
+//        plateau.ajouter(new Pion('0',2,2));
+//        System.out.println(plateau.toString());
     }
 }

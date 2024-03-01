@@ -1,49 +1,46 @@
-public class Plateau {
-    private final int LIGNE_MAX = 3;
-    private final int COLONNE_MAX = 3;
-    private int ligne;
-    private int colonne;
-    private static String[][] Spot;
+import java.util.LinkedList;
+@SuppressWarnings("SpellCheckingInspection")
 
-    public Plateau() {
-        Spot = new String[][]{
-                {" ", " ", "O"},
-                {" ", " ", "O"},
-                {" ", " ", "O"}
-        };
+public class Plateau {
+    private int largeur, hauteur;
+    private LinkedList<Pion> pions;
+
+    public Plateau(int largeur, int hauteur) {
+        assert(hauteur > 0 && largeur > 0);
+        this.largeur = largeur;
+        this.hauteur = hauteur;
+        pions = new LinkedList<>();
     }
 
-    public void Jeu() {
-        int x, y = x = 0;
-        final int taille = 13; // Taille de la grille (13x13)
-        final int espacementRow = 4; // lignes
-        final int emplacementValeur = 2; // Les lignes où les valeurs se trouve
-        final int espacementCol = 3; // colonnes
+    public void ajouter(Pion p){
+        pions.add(p);
 
-        for (int i = 0; i < taille; i++) {
-            if (i % emplacementValeur == 0 && i % 4 != 0){
-                System.out.print(" * ");
-                for (int j = 0; j < 3; j++) {
-                    System.out.print("    "+Spot[y][x++]+"     * ");
-                }
-                x=0;
-                y++;
+    }
+
+    public Pion occupant(int x, int y){
+        for (Pion e : pions){
+            if(e.occupe(x,y)){
+                return e;
             }
-            else if (i % espacementRow == 0) {
-                for (int j = 0; j < taille; j++) {
-                    System.out.print(" * ");
-                }
-            } else {
-                System.out.print(" * ");
-                for (int j = 0; j < taille - 2; j++) {
-                    if(j % espacementCol == 0 && j != 0) {
-                        System.out.print(" * ");
-                    }
-                    System.out.print("   ");
-                }
-            }
-            System.out.println();
         }
-
+        return null;
+    }
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        final String ligne = "*  *  *  *  *  *  *  *  *  *  *  *  *\n";
+        final String colonne="*           *           *           *\n";
+        sb.append(ligne);
+        for(int y = 0; y < hauteur ; ++y) {
+            sb.append(colonne);
+            sb.append("*");
+            for (int x = 0; x < largeur; ++x) {
+                Pion e = occupant(x,y);
+                sb.append("     " + (e == null ? " " : e.getCouleur()) + "     *");
+            }
+            sb.append("\n");
+            sb.append(colonne);
+            sb.append(ligne);
+        }
+    return sb.toString();
     }
 }

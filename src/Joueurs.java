@@ -4,7 +4,7 @@ public class Joueurs {
     public Pion pion;
 
     public Joueurs () {
-        this.score = 0; // init le score à 0
+        this.score = 0; // initialise le score à 0
         this.color = ' ';
     }
 }

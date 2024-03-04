@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Pion {
     private char couleur;
 
@@ -65,4 +67,18 @@ public class Pion {
         this.x = x;
         this.y = y;
     }
+    public char getCouleur(){
+        return couleur;
+    }
+
+    public void bouge(int largeur, int hauteur){
+        if(x >= largeur || y >= hauteur || x < 0 || y < 0 ){
+            x+=-1;y+=-1;
+        }
+    }
+
+    public boolean occupe(int x, int y){
+        return this.x == x && this.y == y ;
+    }
 }
+

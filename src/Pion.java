@@ -1,13 +1,10 @@
 import java.util.ArrayList;
-
+@SuppressWarnings("SpellCheckingInspection")
 public class Pion {
     private char couleur;
-
-    private int x, y;
+    public int x, y;
     public ArrayList<Pion> pion;
 
-    public Pion() {
-    }
 
     public void deplacement(ArrayList<Pion> pion, int pos, char direction){
         //HautBasGaucheDroite
@@ -19,19 +16,19 @@ public class Pion {
         {
             switch(direction){
                 case 'H':
-                //condition y != 0
-                //levier.x = pivot.x
-                //levier.y = pivot.y-1
+                    //condition y != 0
+                    //levier.x = pivot.x
+                    //levier.y = pivot.y-1
                     break;
                 case 'B':
-                //condition y != 2
-                //levier.x = pivot.x
-                //levier.y = pivot.y-1
+                    //condition y != 2
+                    //levier.x = pivot.x
+                    //levier.y = pivot.y-1
                     break;
                 case 'G':
-                //condition x != 0
-                //levier.x = pivot.x
-                //levier.y = pivot.y-1
+                    //condition x != 0
+                    //levier.x = pivot.x
+                    //levier.y = pivot.y-1
                     break;
                 case 'D':
                     //condition y != 2
@@ -67,18 +64,19 @@ public class Pion {
         this.x = x;
         this.y = y;
     }
-    public char getCouleur(){
+
+    public char getCouleur() {
         return couleur;
     }
 
-    public void bouge(int largeur, int hauteur){
-        if(x >= largeur || y >= hauteur || x < 0 || y < 0 ){
-            x+=-1;y+=-1;
-        }
+    public boolean occupe(int x, int y){
+        return this.x == x && this.y == y;
     }
 
-    public boolean occupe(int x, int y){
-        return this.x == x && this.y == y ;
+    public int getX() {
+        return x;
+    }
+    public int getY() {
+        return y;
     }
 }
-

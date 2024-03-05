@@ -14,7 +14,6 @@ public class Plateau {
 
     public void ajouter(Pion p){
         pions.add(p);
-
     }
 
     public Pion occupant(int x, int y){
@@ -25,6 +24,7 @@ public class Plateau {
         }
         return null;
     }
+
     public String toString() {
         StringBuilder sb = new StringBuilder();
         final String ligne = "*  *  *  *  *  *  *  *  *  *  *  *  *\n";
@@ -41,6 +41,6 @@ public class Plateau {
             sb.append(colonne);
             sb.append(ligne);
         }
-    return sb.toString();
+        return sb.toString();
     }
 }

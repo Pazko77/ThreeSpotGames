@@ -18,19 +18,17 @@ public class Jeu {
 
         int scoreJ1 = j1.getScore(), scoreJ2 = j2.getScore();
         //j1-j2 >= 6
-        if(scoreJ1 > scoreJ2)
             return (scoreJ1-scoreJ2) >= 6;
-        else
-            return (scoreJ2-scoreJ1) >= 6;
     }
 
     public String aGagne(Joueurs j1 ,Joueurs j2){
-        if (comparerScore(j1, j2)){
-
-        }
-        return "\0";
+        StringBuilder sb = new StringBuilder();
+        sb.append("Le joueur");
+        sb.append(comparerScore(j1,j2) ? j1.getCouleur() : j2.getCouleur());
+        sb.append("à Gagner\n");
+        return sb.toString();
     }
-    public boolean Estfini(){
-        return false;
+    public boolean Estfini(Joueurs j1 ,Joueurs j2){
+        return j1.getScore() >= 12 || j2.getScore() >= 12;
     }
 }

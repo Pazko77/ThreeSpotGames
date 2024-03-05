@@ -1,42 +1,38 @@
 import java.util.ArrayList;
 @SuppressWarnings("SpellCheckingInspection")
 public class Pion {
-    private char couleur;
-    public int x, y;
+    private char id;
+    public int x,y;
     public ArrayList<Pion> pion;
 
-
-    public void deplacement(ArrayList<Pion> pion, int pos, char direction){
-        //HautBasGaucheDroite
+    public void deplacement(ArrayList<Pion> pion,int positionX, int positionY, char direction){
         Pion pivot = pion.getFirst();
         Pion levier = pion.getLast();
-        //pivot.x = pos.x;
-        //pivot.y = pos.y;
+        pivot.x = positionX;
+        pivot.y = positionY;
         if(deplacementPossible(pivot,direction))
         {
             switch(direction){
                 case 'H':
-                    //condition y != 0
-                    //levier.x = pivot.x
-                    //levier.y = pivot.y-1
+                    assert(y != 0);
+                    levier.x = pivot.x;
+                    levier.y = pivot.y-1;
                     break;
                 case 'B':
-                    //condition y != 2
-                    //levier.x = pivot.x
-                    //levier.y = pivot.y-1
+                    assert(y != 2);
+                    levier.x = pivot.x;
+                    levier.y = pivot.y-1;
                     break;
                 case 'G':
-                    //condition x != 0
-                    //levier.x = pivot.x
-                    //levier.y = pivot.y-1
+                    assert(x != 0);
+                    levier.x = pivot.x;
+                    levier.y = pivot.y-1;
                     break;
                 case 'D':
-                    //condition y != 2
-                    //levier.x = pivot.x
-                    //levier.y = pivot.y+1
+                    assert(x != 2);
+                    levier.x = pivot.x;
+                    levier.y = pivot.y+1;
                     break;
-                default:
-                    //bouge pas;
             }
         }
         else{
@@ -59,14 +55,22 @@ public class Pion {
         }
         return false; //cas commande inexistant
     }
-    public Pion(char couleur, int x, int y) {
-        this.couleur = couleur;
+
+    public void positionEstDisponible(int posX, int posY){
+        for (int y = 0; y < 3; y++) {
+            for (int x = 0; x < 3; x++) {
+                if (occupe(x,y));
+            }
+        }
+    }
+    public Pion(char id, int x, int y) {
+        this.id = id;
         this.x = x;
         this.y = y;
     }
 
     public char getCouleur() {
-        return couleur;
+        return id;
     }
 
     public boolean occupe(int x, int y){

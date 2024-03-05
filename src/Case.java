@@ -4,7 +4,11 @@ public class Case {
     private int noCase;
     private ArrayList<Case> cases = new ArrayList<>();
 
-
+    /**
+     *
+     * @param posX
+     * @param posY
+     */
     public void deplacementPossible(int posX, int posY){
         for (int y = 0; y < 3; y++) {
             for (int x = 0; x < 3; x++) {
@@ -13,6 +17,10 @@ public class Case {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public int getX() {
         return x;
     }

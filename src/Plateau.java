@@ -5,6 +5,11 @@ public class Plateau {
     private int largeur, hauteur;
     private LinkedList<Pion> pions;
 
+    /**
+     *
+     * @param largeur
+     * @param hauteur
+     */
     public Plateau(int largeur, int hauteur) {
         assert(hauteur > 0 && largeur > 0);
         this.largeur = largeur;

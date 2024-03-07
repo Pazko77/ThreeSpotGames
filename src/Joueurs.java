@@ -6,6 +6,12 @@ public class Joueurs {
     private char couleur;
     public ArrayList<Pion> pion = new ArrayList<>();
 
+    /**
+     * @brief Initialise un joueur avec ses positions par defaut
+     * @param couleur Couleur du joueur
+     * @param x Position X de départ
+     * @param y Position Y de départ
+     */
     public Joueurs (char couleur, int x, int y) {
         pion.add(new Pion(couleur,x,y));
         pion.addLast(new Pion(couleur,x+1,y));

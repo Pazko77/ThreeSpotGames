@@ -56,6 +56,11 @@ public class Pion {
         return false; //cas commande inexistant
     }
 
+    /**
+     * @brief vérifie si une position x et y données est disponible (vide)
+     * @param posX Position axe X
+     * @param posY Position axe Y
+     */
     public void positionEstDisponible(int posX, int posY){
         for (int y = 0; y < 3; y++) {
             for (int x = 0; x < 3; x++) {

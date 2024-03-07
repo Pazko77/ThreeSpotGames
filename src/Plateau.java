@@ -2,8 +2,9 @@ import java.util.LinkedList;
 @SuppressWarnings("SpellCheckingInspection")
 
 public class Plateau {
-    private int largeur, hauteur;
-    private LinkedList<Pion> pions;
+    private final int largeur;
+    private final int hauteur;
+    private final LinkedList<Pion> pions;
 
     /**
      * @brief Initialise le plateau du jeu
@@ -54,12 +55,23 @@ public class Plateau {
             sb.append("*");
             for (int x = 0; x < largeur; ++x) {
                 Pion e = occupant(x,y);
-                sb.append("     " +(e != null ? e.getCouleur() : x == 2 ? "0":" ")+ "     *");
+                sb.append("     " +(e != null ? e.getId() : x == 2 ? "0":" ")+ "     *");
             }
             sb.append("\n");
             sb.append(colonne);
             sb.append(ligne);
         }
         return sb.toString();
+    }
+
+    public String positionNonOccuper(){
+        for (int y = 0; y < hauteur; y++) {
+            for (int x = 0; x < largeur; x++) {
+                Pion e = occupant(x,y);
+                if(e.occupe(x,y)){
+                }
+            }
+        }
+        return "lol";
     }
 }

@@ -10,7 +10,7 @@ public class Jeu {
     public void score(Joueurs j, LinkedList<Pion> pions){
 
         for ( Pion e : pions){
-            if(j.getCouleur() == e.getCouleur() && e.getX() == 2){ //on ne vérifie que l'axe x
+            if(j.getCouleur() == e.getId() && e.getX() == 2){ //on ne vérifie que l'axe x
                 j.setScore(1);
                 // 1er spot x=2 et y = 0
                 // 2e spot x=2 et y = 1

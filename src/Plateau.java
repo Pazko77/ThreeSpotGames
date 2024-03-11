@@ -4,8 +4,7 @@ import java.util.LinkedList;
 public class Plateau {
     private final int largeur;
     private final int hauteur;
-    private LinkedList<Pion> pions;
-    private LinkedList<Pion> positionVide;
+    private final LinkedList<Pion> pions;
 
     /**
      * @brief Initialise le plateau du jeu
@@ -17,7 +16,6 @@ public class Plateau {
         this.largeur = largeur;
         this.hauteur = hauteur;
         pions = new LinkedList<>();
-        positionVide = new LinkedList<>();
     }
 
     /**
@@ -66,58 +64,14 @@ public class Plateau {
         return sb.toString();
     }
 
-    /**
-     * @brief crée un pion symbolisant une position vide lorsqu'il ne le trouve pas dans la liste pions
-     */
-    public void positionNonOccuper(){
-        int compteur = 0;
+    public String positionNonOccuper(){
         for (int y = 0; y < hauteur; y++) {
             for (int x = 0; x < largeur; x++) {
-                boolean positionOccuper = false;
-                for (Pion e : pions) {
-                    if (e.occupe(x, y)) {
-                        positionOccuper = true;
-                        break;
-                    }
-                }
-                if (!positionOccuper) {
-                    compteur++;
-                    Pion p = new Pion((char) compteur, x, y);
-                    positionVide.add(p);
+                Pion e = occupant(x,y);
+                if(e.occupe(x,y)){
                 }
             }
         }
+        return "lol";
     }
-
-    /**
-     * @brief efface entièrement la liste chainée
-     */
-    public void clearPositionVide(){
-        positionVide.clear();
-    }
-
-    /**
-     * @param j
-     * @param pos1
-     * @param pos2
-     */
-    public void deplacement(Joueurs j,int pos1, int pos2){
-        j.pion.getFirst().setX(positionVide.get(pos1-1).x);
-        j.pion.getFirst().setY(positionVide.get(pos1-1).y);
-        j.pion.getLast().setX(positionVide.get(pos2-1).x);
-        j.pion.getLast().setY(positionVide.get(pos2-1).y);
-    }
-
-    /**
-     * @param pos1
-     * @param pos2
-     * @return vrai si les position 1 et 2 sont différent et qu'ils sont compris entre 1 et la taille de PositionVide
-     */
-    public boolean saisieDeplacementCorrect(int pos1, int pos2){
-        return pos1!=pos2 && pos1 > 0 && pos1 < positionVide.size() && pos2 > 0 && pos2 < positionVide.size();
-    }
-
-    //vérifie
-    // positionVide.get(pos1).getX()
-    // if (pos1.getX() == pos2.getX() && (pos1.getX() - pos2.getX() == 1) || (pos1.getY() == pos2.getY() && (pos1.getY() - pos2.getY() == 1))
 }

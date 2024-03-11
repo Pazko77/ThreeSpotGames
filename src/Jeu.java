@@ -1,5 +1,6 @@
 import java.util.LinkedList;
 @SuppressWarnings("SpellCheckingInspection")
+
 public class Jeu {
 
     /**
@@ -29,7 +30,7 @@ public class Jeu {
 
         int scoreJ1 = j1.getScore(), scoreJ2 = j2.getScore();
         //j1-j2 >= 6
-            return (scoreJ1-scoreJ2) >= 6;
+        return (scoreJ1-scoreJ2) >= 6;
     }
 
     /**
@@ -52,7 +53,7 @@ public class Jeu {
      * @param j2 Joueurs 2
      * @return si un des deux joueurs atteint le score 12 renvoie vrai
      */
-    public boolean Estfini(Joueurs j1 ,Joueurs j2){
+    public static boolean EstFini(Joueurs j1 ,Joueurs j2){
         return j1.getScore() >= 12 || j2.getScore() >= 12;
     }
 }

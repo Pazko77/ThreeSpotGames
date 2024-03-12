@@ -20,7 +20,7 @@ public class Plateau {
         positionVide = new LinkedList<>();
     }
 
-    /**
+    /**1.2
      * @brief rajoute une objet pion dans une liste chainee
      * @param p le pion a ajouter dans la liste chainee
      */
@@ -43,11 +43,20 @@ public class Plateau {
         return null;
     }
 
+    public Pion occupantVide(int x, int y){
+        for (Pion e : positionVide){
+            if(e.occupe(x,y)){
+                return e;
+            }
+        }
+        return null;
+    }
+
     /**
      * @brief Créer le tableau sous forme de chaine de caractère avec tout les éléments dessus
      * @return affichage du tableau
      */
-    public String toString() {
+    public String toStringAfter() {
         StringBuilder sb = new StringBuilder();
         final String ligne = "*  *  *  *  *  *  *  *  *  *  *  *  *\n";
         final String colonne="*           *           *           *\n";
@@ -57,7 +66,27 @@ public class Plateau {
             sb.append("*");
             for (int x = 0; x < largeur; ++x) {
                 Pion e = occupant(x,y);
-                sb.append("     " +(e != null ? e.getId() : x == 2 ? "0":" ")+ "     *");
+                Pion f = occupantVide(x,y);
+                sb.append("     " +(e != null ? e.getId() : (f != null ? f.getId() : x == 2 ? "O" :" "))+ "     *");
+            }
+            sb.append("\n");
+            sb.append(colonne);
+            sb.append(ligne);
+        }
+        return sb.toString();
+    }
+
+    public String toStringBefore() {
+        StringBuilder sb = new StringBuilder();
+        final String ligne = "*  *  *  *  *  *  *  *  *  *  *  *  *\n";
+        final String colonne="*           *           *           *\n";
+        sb.append(ligne);
+        for(int y = 0; y < hauteur ; ++y) {
+            sb.append(colonne);
+            sb.append("*");
+            for (int x = 0; x < largeur; ++x) {
+                Pion e = occupant(x,y);
+                sb.append("     " +(e != null ? e.getId() : x == 2 ? "O":" ")+ "     *");
             }
             sb.append("\n");
             sb.append(colonne);
@@ -82,7 +111,7 @@ public class Plateau {
                 }
                 if (!positionOccuper) {
                     compteur++;
-                    Pion p = new Pion((char) compteur, x, y);
+                    Pion p = new Pion((char)('0'+compteur), x, y);
                     positionVide.add(p);
                 }
             }
@@ -114,7 +143,15 @@ public class Plateau {
      * @return vrai si les position 1 et 2 sont différent et qu'ils sont compris entre 1 et la taille de PositionVide
      */
     public boolean saisieDeplacementCorrect(int pos1, int pos2){
-        return pos1!=pos2 && pos1 > 0 && pos1 < positionVide.size() && pos2 > 0 && pos2 < positionVide.size();
+        return (pos1!=pos2)
+                && (pos1 > 0 && pos1 < positionVide.size())
+                && (pos2 > 0 && pos2 < positionVide.size());
+                //&& ((positionVide.get(pos1).getX() == positionVide.get(pos2).getX() && positionVide.get(pos1).getX() - positionVide.get(pos2).getX() == 1)
+                //|| (positionVide.get(pos1).getY() == positionVide.get(pos2).getY() && positionVide.get(pos1).getY() - positionVide.get(pos2).getY() == 1));
+    }
+
+    public LinkedList<Pion> getPions() {
+        return pions;
     }
 
     //vérifie

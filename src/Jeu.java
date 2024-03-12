@@ -8,7 +8,7 @@ public class Jeu {
      * @param j Joueurs
      * @param pions Tableau des pions
      */
-    public void score(Joueurs j, LinkedList<Pion> pions){
+    public static void score(Joueurs j, LinkedList<Pion> pions){
 
         for ( Pion e : pions){
             if(j.getCouleur() == e.getId() && e.getX() == 2){ //on ne vérifie que l'axe x

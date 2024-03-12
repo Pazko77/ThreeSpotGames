@@ -28,13 +28,20 @@ public class Jeu {
      * @param j2 Joueurs 2
      * @return Si scoreJ1- scoreJ2 >= 6,renvoie vrai sinon faux
      */
-    public static boolean comparerScore(Joueurs j1, Joueurs j2){
+    public static char comparerScore(Joueurs j1, Joueurs j2) {
 
         int scoreJ1 = j1.getScore(), scoreJ2 = j2.getScore();
-        if(scoreJ1 > scoreJ2)
-            return (scoreJ1-scoreJ2) <= 6;
-        else
-            return (scoreJ2-scoreJ1) <= 6;
+        if (scoreJ1 > scoreJ2){
+            if ((scoreJ1 - scoreJ2) <= 6)
+                return j1.getCouleur();
+            else
+                return j2.getCouleur();
+        }else{
+            if((scoreJ1-scoreJ2) <= 6)
+                return j1.getCouleur();
+            else
+                return j2.getCouleur();
+        }
     }
 
     /**
@@ -46,7 +53,7 @@ public class Jeu {
     public static String aGagne(Joueurs j1, Joueurs j2){
         StringBuilder sb = new StringBuilder();
         sb.append("Le joueur ");
-        sb.append(comparerScore(j1,j2) ? j1.getCouleur() : j2.getCouleur());
+        sb.append(comparerScore(j1,j2));
         sb.append(" à Gagner\n");
         return sb.toString();
     }
@@ -66,7 +73,7 @@ public class Jeu {
         sb.append(j1.getCouleur());
         sb.append(" ");
         sb.append(j1.getScore());
-        sb.append("-");
+        sb.append(" - ");
         sb.append(j2.getScore());
         sb.append(" ");
         sb.append(j2.getCouleur());

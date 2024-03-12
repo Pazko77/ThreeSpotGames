@@ -4,7 +4,7 @@ import java.util.Scanner;
 @SuppressWarnings("SpellCheckingInspection")
 public class Main {
     public static boolean joueurCourant;
-    public static void main(String[] args) {
+    public static void main(String[] args){
 
         Joueurs Rouge = new Joueurs('R',1,0);
         Joueurs Blanc = new Joueurs('W',1,1);

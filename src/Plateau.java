@@ -20,12 +20,21 @@ public class Plateau {
         positionVide = new LinkedList<>();
     }
 
-    /**1.2
+    /**
      * @brief rajoute une objet pion dans une liste chainee
-     * @param p le pion a ajouter dans la liste chainee
+     * @param j le pion a ajouter dans la liste chainee
      */
-    public void ajouter(Pion p){
-        pions.add(p);
+    public void ajouter(Joueurs j){
+        pions.addAll(j.pion);
+    }
+
+    public void supprimer(Joueurs j){
+        for (int i = 0; i < pions.size(); i++) {
+            if (j.getCouleur() == pions.get(i).getId()){
+                pions.remove(i);
+                pions.remove(i);
+            }
+        }
     }
 
     /**
@@ -56,7 +65,7 @@ public class Plateau {
      * @brief Créer le tableau sous forme de chaine de caractère avec tout les éléments dessus
      * @return affichage du tableau
      */
-    public String toStringAfter() {
+    public String toStringBefore() {
         StringBuilder sb = new StringBuilder();
         final String ligne = "*  *  *  *  *  *  *  *  *  *  *  *  *\n";
         final String colonne="*           *           *           *\n";
@@ -76,7 +85,7 @@ public class Plateau {
         return sb.toString();
     }
 
-    public String toStringBefore() {
+    public String toStringAfter() {
         StringBuilder sb = new StringBuilder();
         final String ligne = "*  *  *  *  *  *  *  *  *  *  *  *  *\n";
         final String colonne="*           *           *           *\n";
@@ -144,8 +153,8 @@ public class Plateau {
      */
     public boolean saisieDeplacementCorrect(int pos1, int pos2){
         return (pos1!=pos2)
-                && (pos1 > 0 && pos1 < positionVide.size())
-                && (pos2 > 0 && pos2 < positionVide.size());
+                && (pos1 > 0 && pos1 <= positionVide.size())
+                && (pos2 > 0 && pos2 <= positionVide.size());
                 //&& ((positionVide.get(pos1).getX() == positionVide.get(pos2).getX() && positionVide.get(pos1).getX() - positionVide.get(pos2).getX() == 1)
                 //|| (positionVide.get(pos1).getY() == positionVide.get(pos2).getY() && positionVide.get(pos1).getY() - positionVide.get(pos2).getY() == 1));
     }

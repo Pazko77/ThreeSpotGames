@@ -10,30 +10,22 @@ public class Main {
         Joueurs Blanc = new Joueurs('W',1,1);
         Joueurs Bleu = new Joueurs('B',1,2);
         Plateau plateau = new Plateau(3,3);
-
         Scanner sc = new Scanner(System.in);
-
-        plateau.ajouter(Rouge.pion.getFirst());
-        plateau.ajouter(Rouge.pion.getLast());
-
-        plateau.ajouter(Bleu.pion.getFirst());
-        plateau.ajouter(Bleu.pion.getLast());
-
-        plateau.ajouter(Blanc.pion.getFirst());
-        plateau.ajouter(Blanc.pion.getLast());
+        plateau.ajouter(Rouge);
+        plateau.ajouter(Bleu);
+        plateau.ajouter(Blanc);
 
         while (!Jeu.EstFini(Rouge, Bleu)){
             Joueurs courant;
-
             if(joueurCourant)
                 courant = Rouge;
             else
                 courant = Bleu;
 
+            plateau.supprimer(courant);
             plateau.positionNonOccuper();
             System.out.println(plateau.toStringBefore());
-            System.out.println(plateau.toStringAfter());
-            plateau.positionNonOccuper();
+            plateau.ajouter(courant);
             System.out.println("Joueur "+courant.getCouleur()+" à vous de jouez :");
             int pos1 = 0 ,pos2 = 0;
             while(!plateau.saisieDeplacementCorrect(pos1,pos2)) {
@@ -44,12 +36,15 @@ public class Main {
             Jeu.score(courant,plateau.getPions());
             System.out.println(plateau.toStringAfter());
             plateau.clearPositionVide();
+
+            courant = Blanc;
+            plateau.supprimer(courant);
             plateau.positionNonOccuper();
             System.out.println(plateau.toStringBefore());
+            plateau.ajouter(courant);
             System.out.println("Joueur "+courant.getCouleur()+" jouez le pion neutre :");
             pos1 = 0;
             pos2 = 0;
-            courant = Blanc;
             while(!plateau.saisieDeplacementCorrect(pos1,pos2)) {
                 pos1 = sc.nextInt();pos2 = sc.nextInt();
                 plateau.deplacement(courant, pos1, pos2);

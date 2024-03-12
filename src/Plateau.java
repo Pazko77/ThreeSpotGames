@@ -152,11 +152,37 @@ public class Plateau {
      * @return vrai si les position 1 et 2 sont différent et qu'ils sont compris entre 1 et la taille de PositionVide
      */
     public boolean saisieDeplacementCorrect(int pos1, int pos2){
-        return (pos1!=pos2)
-                && (pos1 > 0 && pos1 <= positionVide.size())
-                && (pos2 > 0 && pos2 <= positionVide.size());
-                //&& ((positionVide.get(pos1).getX() == positionVide.get(pos2).getX() && positionVide.get(pos1).getX() - positionVide.get(pos2).getX() == 1)
-                //|| (positionVide.get(pos1).getY() == positionVide.get(pos2).getY() && positionVide.get(pos1).getY() - positionVide.get(pos2).getY() == 1));
+        if(pos1 == pos2)
+            return false;
+        if(pos1 < 0 && pos1 > positionVide.size())
+            return false;
+        if(pos2 < 0 && pos2 > positionVide.size())
+            return false;
+        int pos1X = positionVide.get(pos1-1).getX();
+        int pos1Y = positionVide.get(pos1-1).getY();
+        int pos2X = positionVide.get(pos2-1).getX();
+        int pos2Y = positionVide.get(pos1-1).getY();
+        if(pos1X == pos2X){
+            if(pos1Y < pos2Y)
+                return (pos2Y - pos1Y) < 2;
+            else
+                return (pos1Y - pos2Y) < 2;
+        }
+        if(pos1Y == pos2Y){
+            if(pos1X< pos2X)
+                return (pos2X - pos1X) < 2;
+            else
+                return (pos1X - pos2X) < 2;
+        }
+        return true;
+
+//        return (pos1!=pos2)
+//                && (pos1 > 0 && pos1 <= positionVide.size())
+//                && (pos2 > 0 && pos2 <= positionVide.size())
+//                && ((positionVide.get(pos1-1).getX() == positionVide.get(pos2-1).getX()
+//                    && (positionVide.get(pos1-1).getX() - positionVide.get(pos2-1).getX()) < 2)
+//                && (positionVide.get(pos1-1).getY() == positionVide.get(pos2-1).getY()
+//                    && (positionVide.get(pos1-1).getY() - positionVide.get(pos2-1).getY()) < 2));
     }
 
     public LinkedList<Pion> getPions() {

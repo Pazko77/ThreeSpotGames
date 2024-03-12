@@ -15,7 +15,7 @@ public class Main {
         plateau.ajouter(Bleu);
         plateau.ajouter(Blanc);
 
-        while (!Jeu.EstFini(Rouge, Bleu)){
+        while (true){
             Joueurs courant;
             if(joueurCourant)
                 courant = Rouge;
@@ -36,7 +36,9 @@ public class Main {
             Jeu.score(courant,plateau.getPions());
             System.out.println(plateau.toStringAfter());
             plateau.clearPositionVide();
-
+            System.out.println(Jeu.affichageScore(Rouge,Bleu));
+            if(Jeu.EstFini(Rouge, Bleu))
+                break;
             courant = Blanc;
             plateau.supprimer(courant);
             plateau.positionNonOccuper();
@@ -53,5 +55,6 @@ public class Main {
             plateau.clearPositionVide();
             joueurCourant = !joueurCourant;
         }
+        System.out.println(Jeu.aGagne(Rouge,Bleu));
     }
 }

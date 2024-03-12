@@ -175,21 +175,9 @@ public class Plateau {
                 return (pos1X - pos2X) < 2;
         }
         return true;
-
-//        return (pos1!=pos2)
-//                && (pos1 > 0 && pos1 <= positionVide.size())
-//                && (pos2 > 0 && pos2 <= positionVide.size())
-//                && ((positionVide.get(pos1-1).getX() == positionVide.get(pos2-1).getX()
-//                    && (positionVide.get(pos1-1).getX() - positionVide.get(pos2-1).getX()) < 2)
-//                && (positionVide.get(pos1-1).getY() == positionVide.get(pos2-1).getY()
-//                    && (positionVide.get(pos1-1).getY() - positionVide.get(pos2-1).getY()) < 2));
     }
 
     public LinkedList<Pion> getPions() {
         return pions;
     }
-
-    //vérifie
-    // positionVide.get(pos1).getX()
-    // if (pos1.getX() == pos2.getX() && (pos1.getX() - pos2.getX() == 1) || (pos1.getY() == pos2.getY() && (pos1.getY() - pos2.getY() == 1))
 }

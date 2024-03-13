@@ -76,7 +76,7 @@ public class Plateau {
             for (int x = 0; x < largeur; ++x) {
                 Pion e = occupant(x,y);
                 Pion f = occupantVide(x,y);
-                sb.append("     " +(e != null ? e.getId() : (f != null ? f.getId() : x == 2 ? "O" :" "))+ "     *");
+                sb.append("     " +(e != null ? e.getId() : (f != null ? f.getId() : x == 2 ? "O" : " "))+ "     *");
             }
             sb.append("\n");
             sb.append(colonne);
@@ -95,7 +95,7 @@ public class Plateau {
             sb.append("*");
             for (int x = 0; x < largeur; ++x) {
                 Pion e = occupant(x,y);
-                sb.append("     " +(e != null ? e.getId() : x == 2 ? "O":" ")+ "     *");
+                sb.append("     " +(e != null ? e.getId() : x == 2 ? "O" : " " )+ "     *");
             }
             sb.append("\n");
             sb.append(colonne);
@@ -161,20 +161,20 @@ public class Plateau {
         int pos1X = positionVide.get(pos1-1).getX();
         int pos1Y = positionVide.get(pos1-1).getY();
         int pos2X = positionVide.get(pos2-1).getX();
-        int pos2Y = positionVide.get(pos1-1).getY();
-        if(pos1X == pos2X){
+        int pos2Y = positionVide.get(pos2-1).getY();
+        if((pos1X == pos2X) && (pos1Y != pos2Y)){
             if(pos1Y < pos2Y)
                 return (pos2Y - pos1Y) < 2;
             else
                 return (pos1Y - pos2Y) < 2;
         }
-        if(pos1Y == pos2Y){
+        if((pos1Y == pos2Y) && (pos1X != pos2X)){
             if(pos1X< pos2X)
                 return (pos2X - pos1X) < 2;
             else
                 return (pos1X - pos2X) < 2;
         }
-        return true;
+        return false;
     }
 
     public LinkedList<Pion> getPions() {

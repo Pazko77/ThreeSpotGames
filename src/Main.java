@@ -1,14 +1,12 @@
 import java.lang.*;
-import java.util.Scanner;
 
 @SuppressWarnings("SpellCheckingInspection")
 public class Main {
-    public static boolean joueurCourant;
     public static void main(String[] args){
-
-        Joueurs Rouge = new Joueurs('R',1,0);
-        Joueurs Blanc = new Joueurs('W',1,1);
-        Joueurs Bleu = new Joueurs('B',1,2);
+        boolean joueurCourant = true;
+        Joueur Rouge = new Joueur('R',1,0);
+        Joueur Blanc = new Joueur('W',1,1);
+        Joueur Bleu = new Joueur('B',1,2);
         Plateau plateau = new Plateau(3,3);
         plateau.ajouter(Rouge);
         plateau.ajouter(Bleu);
@@ -19,7 +17,7 @@ public class Main {
         System.out.println("  - Le joueur R jouera la couleur rouge.");
         System.out.println();
         while (true){
-            Joueurs courant;
+            Joueur courant;
             if(joueurCourant) courant = Rouge;
             else courant = Bleu;
             Jeu.jouer(courant,plateau);
@@ -29,6 +27,6 @@ public class Main {
             Jeu.jouer(courant,plateau);
             joueurCourant = !joueurCourant;
         }
-        System.out.println(Jeu.aGagne(Rouge,Bleu));
+        System.out.println(Jeu.quiAGagne(Rouge,Bleu));
     }
 }

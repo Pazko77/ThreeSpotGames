@@ -7,6 +7,10 @@ public class Plateau {
     private LinkedList<Pion> pions;
     private LinkedList<Pion> positionVide;
 
+    public LinkedList<Pion> getPositionVide() {
+        return positionVide;
+    }
+
     /**
      * @brief Initialise le plateau du jeu
      * @param largeur largeur du plateau
@@ -24,13 +28,13 @@ public class Plateau {
      * @brief rajoute une objet pion dans une liste chainee
      * @param j le pion a ajouter dans la liste chainee
      */
-    public void ajouter(Joueurs j){
+    public void ajouter(Joueur j){
         pions.addAll(j.pion);
     }
 
-    public void supprimer(Joueurs j){
+    public void supprimer(Joueur joueur){
         for (int i = 0; i < pions.size(); i++) {
-            if (j.getCouleur() == pions.get(i).getId()){
+            if (joueur.getCouleur() == pions.get(i).getId()){
                 pions.remove(i);
                 pions.remove(i);
             }
@@ -135,15 +139,15 @@ public class Plateau {
     }
 
     /**
-     * @param j
+     * @param joueur
      * @param pos1
      * @param pos2
      */
-    public void deplacement(Joueurs j,int pos1, int pos2){
-        j.pion.getFirst().setX(positionVide.get(pos1-1).getX());
-        j.pion.getFirst().setY(positionVide.get(pos1-1).getY());
-        j.pion.getLast().setX(positionVide.get(pos2-1).getX());
-        j.pion.getLast().setY(positionVide.get(pos2-1).getY());
+    public void deplacement(Joueur joueur, int pos1, int pos2){
+        joueur.pion.getFirst().setX(positionVide.get(pos1-1).getX());
+        joueur.pion.getFirst().setY(positionVide.get(pos1-1).getY());
+        joueur.pion.getLast().setX(positionVide.get(pos2-1).getX());
+        joueur.pion.getLast().setY(positionVide.get(pos2-1).getY());
     }
 
     /**

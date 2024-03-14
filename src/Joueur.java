@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 @SuppressWarnings("SpellCheckingInspection")
-public class Joueurs {
+public class Joueur {
     private int score;
     private char couleur;
     public ArrayList<Pion> pion = new ArrayList<>();
@@ -12,7 +12,7 @@ public class Joueurs {
      * @param x Position X de départ
      * @param y Position Y de départ
      */
-    public Joueurs (char couleur, int x, int y) {
+    public Joueur(char couleur, int x, int y) {
         pion.add(new Pion(couleur,x,y));
         pion.addLast(new Pion(couleur,x+1,y));
         this.score = 0; // initialise le score à 0

@@ -1,7 +1,6 @@
-import java.util.ArrayList;
 @SuppressWarnings("SpellCheckingInspection")
 public class Pion {
-    private char id;
+    private final char id;
     private int x,y;
 
     /**

@@ -4,8 +4,8 @@ import java.util.LinkedList;
 public class Plateau {
     private final int largeur;
     private final int hauteur;
-    private LinkedList<Pion> pions;
-    private LinkedList<Pion> positionVide;
+    private final LinkedList<Pion> pions;
+    private final LinkedList<Pion> positionVide;
 
     public LinkedList<Pion> getPositionVide() {
         return positionVide;
@@ -80,7 +80,7 @@ public class Plateau {
             for (int x = 0; x < largeur; ++x) {
                 Pion e = occupant(x,y);
                 Pion f = occupantVide(x,y);
-                sb.append("     " +(e != null ? e.getId() : (f != null ? f.getId() : x == 2 ? "O" : " "))+ "     *");
+                sb.append("     ").append(e != null ? e.getId() : (f != null ? f.getId() : x == 2 ? "O" : " ")).append("     *");
             }
             sb.append("\n");
             sb.append(colonne);
@@ -99,7 +99,7 @@ public class Plateau {
             sb.append("*");
             for (int x = 0; x < largeur; ++x) {
                 Pion e = occupant(x,y);
-                sb.append("     " +(e != null ? e.getId() : x == 2 ? "O" : " " )+ "     *");
+                sb.append("     ").append(e != null ? e.getId() : x == 2 ? "O" : " ").append("     *");
             }
             sb.append("\n");
             sb.append(colonne);
@@ -139,9 +139,9 @@ public class Plateau {
     }
 
     /**
-     * @param joueur
-     * @param pos1
-     * @param pos2
+     * @param joueur le joueur
+     * @param pos1 première position
+     * @param pos2 deuxième position
      */
     public void deplacement(Joueur joueur, int pos1, int pos2){
         joueur.pion.getFirst().setX(positionVide.get(pos1-1).getX());
@@ -151,16 +151,16 @@ public class Plateau {
     }
 
     /**
-     * @param pos1
-     * @param pos2
+     * @param pos1 première position
+     * @param pos2 deuxième position
      * @return vrai si les position 1 et 2 sont différent et qu'ils sont compris entre 1 et la taille de PositionVide
      */
     public boolean saisieDeplacementCorrect(int pos1, int pos2){
         if(pos1 == pos2)
             return false;
-        if(pos1 < 0 && pos1 > positionVide.size())
+        if(pos1 < 0 || pos1 > positionVide.size())
             return false;
-        if(pos2 < 0 && pos2 > positionVide.size())
+        if(pos2 < 0 || pos2 > positionVide.size())
             return false;
         int pos1X = positionVide.get(pos1-1).getX();
         int pos1Y = positionVide.get(pos1-1).getY();

@@ -10,53 +10,23 @@ public class Main {
         Joueurs Blanc = new Joueurs('W',1,1);
         Joueurs Bleu = new Joueurs('B',1,2);
         Plateau plateau = new Plateau(3,3);
-        Scanner sc = new Scanner(System.in);
         plateau.ajouter(Rouge);
         plateau.ajouter(Bleu);
         plateau.ajouter(Blanc);
-        System.out.println("Bienvenue sur le 3 Dots Game !");
+        System.out.println("Bienvenue sur le 3 Spots Game !");
         System.out.println();
         System.out.println("  - Le joueur B jouera la couleur bleue.");
         System.out.println("  - Le joueur R jouera la couleur rouge.");
         System.out.println();
         while (true){
             Joueurs courant;
-            if(joueurCourant)
-                courant = Rouge;
-            else
-                courant = Bleu;
-            plateau.positionNonOccuper();
-            plateau.supprimer(courant);
-            System.out.println(plateau.toStringBefore());
-            plateau.ajouter(courant);
-            System.out.println("Joueur "+courant.getCouleur()+" à vous de jouez :");
-            int pos1 = 0 ,pos2 = 0;
-            while(!plateau.saisieDeplacementCorrect(pos1,pos2)) {
-                System.out.println("Saississez deux position différente voisine disponible sur le plateau :");
-                pos1 = sc.nextInt();pos2 = sc.nextInt();
-                plateau.deplacement(courant, pos1, pos2);
-            }
-            Jeu.score(courant,plateau.getPions());
-            System.out.println(plateau.toStringAfter());
-            plateau.clearPositionVide();
+            if(joueurCourant) courant = Rouge;
+            else courant = Bleu;
+            Jeu.jouer(courant,plateau);
             System.out.println(Jeu.affichageScore(Rouge,Bleu));
-            if(Jeu.EstFini(Rouge, Bleu))
-                break;
-
+            if(Jeu.EstFini(Rouge, Bleu)) break;
             courant = Blanc;
-            plateau.positionNonOccuper();
-            plateau.supprimer(courant);
-            System.out.println(plateau.toStringBefore());
-            plateau.ajouter(courant);
-            System.out.println("Joueur "+courant.getCouleur()+" jouez le pion neutre :");
-            pos1 = 0;
-            pos2 = 0;
-            while(!plateau.saisieDeplacementCorrect(pos1,pos2)) {
-                pos1 = sc.nextInt();pos2 = sc.nextInt();
-                plateau.deplacement(courant, pos1, pos2);
-            }
-            System.out.println(plateau.toStringAfter());
-            plateau.clearPositionVide();
+            Jeu.jouer(courant,plateau);
             joueurCourant = !joueurCourant;
         }
         System.out.println(Jeu.aGagne(Rouge,Bleu));

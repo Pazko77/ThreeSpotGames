@@ -1,4 +1,5 @@
 import java.util.LinkedList;
+import java.util.Scanner;
 import java.util.stream.Stream;
 
 @SuppressWarnings("SpellCheckingInspection")
@@ -78,5 +79,28 @@ public class Jeu {
         sb.append(" ");
         sb.append(j2.getCouleur());
         return sb.toString();
+    }
+
+    public static void jouer(Joueurs j, Plateau p){
+        Scanner sc = new Scanner(System.in);
+        boolean pionBlanc = j.getCouleur() == 'W';
+        p.positionNonOccuper();
+        p.supprimer(j);
+        System.out.println(p.toStringBefore());
+        p.ajouter(j);
+        if(!pionBlanc)
+            System.out.println("Joueur "+j.getCouleur()+" à vous de jouez :");
+        else
+            System.out.println("Jouez le pion neutre "+j.getCouleur()+" : ");
+
+        int pos1 = 0 ,pos2 = 0;
+        while(!p.saisieDeplacementCorrect(pos1,pos2)) {
+            System.out.println("Saississez deux position différente voisine disponible sur le plateau :");
+            pos1 = sc.nextInt();pos2 = sc.nextInt();
+            p.deplacement(j, pos1, pos2);
+        }
+        if(!pionBlanc) Jeu.score(j,p.getPions());
+        System.out.println(p.toStringAfter());
+        p.clearPositionVide();
     }
 }

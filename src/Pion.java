@@ -2,7 +2,7 @@ import java.util.ArrayList;
 @SuppressWarnings("SpellCheckingInspection")
 public class Pion {
     private char id;
-    public int x,y;
+    private int x,y;
 
     /**
      * @brief initialise un pion

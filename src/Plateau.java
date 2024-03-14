@@ -140,10 +140,10 @@ public class Plateau {
      * @param pos2
      */
     public void deplacement(Joueurs j,int pos1, int pos2){
-        j.pion.getFirst().setX(positionVide.get(pos1-1).x);
-        j.pion.getFirst().setY(positionVide.get(pos1-1).y);
-        j.pion.getLast().setX(positionVide.get(pos2-1).x);
-        j.pion.getLast().setY(positionVide.get(pos2-1).y);
+        j.pion.getFirst().setX(positionVide.get(pos1-1).getX());
+        j.pion.getFirst().setY(positionVide.get(pos1-1).getY());
+        j.pion.getLast().setX(positionVide.get(pos2-1).getX());
+        j.pion.getLast().setY(positionVide.get(pos2-1).getY());
     }
 
     /**

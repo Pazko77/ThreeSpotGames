@@ -4,6 +4,7 @@ import java.util.ArrayList;
 public class Joueur {
     private int score;
     private char couleur;
+
     public ArrayList<Pion> pion = new ArrayList<>();
 
     /**
@@ -29,5 +30,9 @@ public class Joueur {
 
     public int getScore() {
         return score;
+    }
+
+    public ArrayList<Pion> getPion() {
+        return pion;
     }
 }

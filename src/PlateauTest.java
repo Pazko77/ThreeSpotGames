@@ -67,6 +67,14 @@ class PlateauTest {
 
     @Test
     void deplacementTest() {
-
+        Plateau plateau = new Plateau(3,3);
+        Joueur joueur1 = new Joueur('1',1,1);
+        plateau.ajouter(joueur1);
+        Joueur joueur2 = new Joueur('2',0,1);
+        plateau.ajouter(joueur2);
+        assert(joueur1.getPion().getFirst().getX()==1 && joueur1.getPion().getFirst().getY()==1); //Initialement à la position x=1 et y=1
+        plateau.positionNonOccuper();
+        plateau.deplacement(joueur1,1,2);
+        assert(!(joueur1.getPion().getFirst().getX()==1 && joueur1.getPion().getFirst().getY()==1)); //N'est plus à la position x=1 et y=1 donc y'a eu un déplacement
     }
 }

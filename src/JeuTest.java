@@ -50,7 +50,6 @@ class JeuTest {
         for (int i = 0; i < 6; i++) {
             Jeu.score(rouge,plateau.getPions());
         }
-
         assert(Jeu.EstFini(rouge, bleu));
     }
 }

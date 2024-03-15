@@ -1,3 +1,8 @@
+package Test;
+
+import Jeu.Joueur;
+import Jeu.Plateau;
+import Jeu.Jeu;
 import org.junit.jupiter.api.Test;
 
 class JeuTest {

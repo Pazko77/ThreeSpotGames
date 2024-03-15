@@ -1,3 +1,5 @@
+package Jeu;
+
 import java.util.LinkedList;
 @SuppressWarnings("SpellCheckingInspection")
 

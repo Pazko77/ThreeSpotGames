@@ -1,3 +1,5 @@
+package Jeu;
+
 @SuppressWarnings("SpellCheckingInspection")
 public class Pion {
     private final char id;

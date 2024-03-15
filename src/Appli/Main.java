@@ -1,3 +1,9 @@
+package Appli;
+
+import Jeu.Jeu;
+import Jeu.Plateau;
+import Jeu.Joueur;
+
 import java.lang.*;
 
 @SuppressWarnings("SpellCheckingInspection")

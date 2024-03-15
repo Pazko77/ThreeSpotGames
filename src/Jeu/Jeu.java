@@ -1,3 +1,5 @@
+package Jeu;
+
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -37,10 +39,10 @@ public class Jeu {
             else
                 return joueur2.getCouleur();
         }else{
-            if((scoreJ1-scoreJ2) <= 6)
-                return joueur1.getCouleur();
-            else
+            if((scoreJ2-scoreJ1) <= 6)
                 return joueur2.getCouleur();
+            else
+                return joueur1.getCouleur();
         }
     }
 
@@ -51,11 +53,7 @@ public class Jeu {
      * @return Renvoie un String avec la couleur du joueurs gagnant
      */
     public static String quiAGagne(Joueur joueur1, Joueur joueur2){
-        StringBuilder sb = new StringBuilder();
-        sb.append("Le joueur ");
-        sb.append(comparerScore(joueur1,joueur2));
-        sb.append(" à Gagner\n");
-        return sb.toString();
+        return "Le joueur " + comparerScore(joueur1, joueur2) + " à Gagner\n";
     }
 
     /**
@@ -69,17 +67,14 @@ public class Jeu {
     }
 
     public static String affichageScore(Joueur joueur1, Joueur joueur2){
-        StringBuilder sb = new StringBuilder();
-        sb.append(joueur1.getCouleur());
-        sb.append(" ");
-        sb.append(joueur1.getScore());
-        sb.append(" - ");
-        sb.append(joueur2.getScore());
-        sb.append(" ");
-        sb.append(joueur2.getCouleur());
-        return sb.toString();
+        return joueur1.getCouleur() + " " + joueur1.getScore() + " - " + joueur2.getScore() + " " + joueur2.getCouleur();
     }
 
+    /**
+     *
+     * @param joueur Joueur courant
+     * @param plateau Le plateau de jeu
+     */
     public static void jouer(Joueur joueur, Plateau plateau){
         Scanner sc = new Scanner(System.in);
         boolean pionBlanc = joueur.getCouleur() == 'W';

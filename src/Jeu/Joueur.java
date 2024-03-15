@@ -1,9 +1,11 @@
+package Jeu;
+
 import java.util.ArrayList;
 
 @SuppressWarnings("SpellCheckingInspection")
 public class Joueur {
     private int score;
-    private char couleur;
+    private final char couleur;
 
     public ArrayList<Pion> pion = new ArrayList<>();
 
